@@ -46,8 +46,8 @@ http://localhost:8080/v1/libraryevent
 			"bookId":123,
 			"bookName":"Apache Kafka with Spring Boot",
 			"bookAuthor":"Saurabh"
-	
-			}
+
+		}
 }
 `
 

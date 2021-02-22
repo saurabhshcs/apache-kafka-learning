@@ -26,3 +26,29 @@ This repository has the complete code related to kafka producers/consumers using
 `
 ./gradlew bootRun
 `
+## cURL command
+`
+curl -i \
+-d '{"libraryEventId":null,"book":{"bookId":456,"bookName":"Kafka Using Spring Boot","bookAuthor":"Saurabh"}}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/libraryevent
+`
+## Or Endpoint URL for postman or any other RestClient
+`
+http://localhost:8080/v1/libraryevent
+`
+## Payload
+
+`
+{
+	"libraryEventId":"null",
+	"book":{
+			"bookId":123,
+			"bookName":"Apache Kafka with Spring Boot",
+			"bookAuthor":"Saurabh"
+	
+			}
+}
+`
+
+## Happy Learning!!!

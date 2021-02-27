@@ -2,10 +2,16 @@
 
 ## Apache Kafka Learning
 
-# kafka-for-developers-using-spring-boot
+# PART-1 Library event producer api
+> This application is creating a topic programmatically. Please see [AutoCreateTopicConfig.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-producer-api/src/main/java/com/techsharezone/library/producer/api/config/AutoCreateConfig.java)
+> This repository has the complete code related to kafka producers/consumers using spring boot.
+> I have used 3 Apache Kafka clusters and 3 replicas in this example. Please see following server.properties
 
-This repository has the complete code related to kafka producers/consumers using spring boot.
-
+```
+-rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:40 server-1.properties
+-rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:41 server-2.properties
+-rw-r--r--   1 saurabhshcs  admin  6863 17 Feb 22:57 server.properties
+```
 
 
 - [Setup-Kafka](https://github.com/saurabhshcs/apache-kafka-developer-guide/blob/main/README.md)

@@ -14,7 +14,7 @@ import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 @Profile("local")
-public class AutoCreateConfig {
+public class AutoCreateTopicConfig {
 
     @Bean
     public NewTopic libraryEvent() {

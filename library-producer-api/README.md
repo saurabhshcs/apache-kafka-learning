@@ -33,7 +33,7 @@
 ./gradlew bootRun
 `
 
-## aaplication.yaml for auto configurations
+## aplication.yaml for auto configurations
 
 ```
 spring:

@@ -11,6 +11,7 @@
 -rw-r--r--   1 saurabhshcs  admin  6863 17 Feb 22:57 server.properties
 ```
 
+## View Setup Apache Kafka Developer guide
 
 - [Setup-Kafka](https://github.com/saurabhshcs/apache-kafka-developer-guide/blob/main/README.md)
 
@@ -47,13 +48,13 @@ http://localhost:8080/v1/libraryevent
 
 ```
 {
-	"libraryEventId":"null",
-	"book":{
-			"bookId":123,
-			"bookName":"Apache Kafka with Spring Boot",
-			"bookAuthor":"Saurabh"
+  "libraryEventId":"null",
+  "book":{
+	 "bookId":123,
+	 "bookName":"Apache Kafka with Spring Boot",
+	 "bookAuthor":"Saurabh"
 
-		}
+	}
 }
 
 ```
@@ -137,6 +138,20 @@ http://localhost:8080/v1/libraryevent
 2021-02-27 00:41:12.993  INFO 35836 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: QRxGzd66R6iVmc5qoW5Dqg
 2021-02-27 00:41:13.114  INFO 35836 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0}}]
 
+```
+
+> Topic created 
+
+## Run cmd for viewing the topics in kafka broker
+
+`
+./kafka-topics --zookeeper localhost:2181 --list
+`
+
+```
+__consumer_offsets
+first-replicated-topic
+library-event
 ```
 
 ## Happy Learning!!!

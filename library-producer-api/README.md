@@ -3,7 +3,8 @@
 ## PART-1 Library event producer api
 > This application is creating a topic programmatically. Please see [AutoCreateTopicConfig.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-producer-api/src/main/java/com/techsharezone/library/producer/api/config/AutoCreateTopicConfig.java)
 > This repository has the complete code related to kafka producers/consumers using spring boot.
-> I have used 3 Apache Kafka clusters and 3 replicas in this example. Please see following server.properties
+> I have used 3 Apache Kafka clusters and 3 replicas in this example. 
+> Please see following server.properties
 
 ```
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:40 server-1.properties
@@ -31,6 +32,28 @@
 `
 ./gradlew bootRun
 `
+
+## aaplication.yaml for auto configurations
+
+```
+spring:
+  profiles:
+    active: local
+    
+spring:
+  profiles: local
+  kafka:
+    template:
+      default-topic: library-events
+    producer:
+      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    admin:
+      properties:
+        bootstarp.servers: localhost:9092, localhost:9093, localhost:9094
+```
+
 ## cURL command
 
 ```

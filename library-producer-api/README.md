@@ -81,13 +81,12 @@ http://localhost:8080/v1/libraryevent
 }
 
 ```
-## Console Logs
+## Console Logs -01 [Asynchronous kafkaTemplate.sendDefault(key, value) invocation]
 
 ```
-2021-02-27 00:41:12.804  INFO 35836 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-02-27 00:41:12.804  INFO 35836 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-02-27 00:41:12.806  INFO 35836 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2021-02-27 00:41:12.954  INFO 35836 --- [nio-8080-exec-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+2021-03-01 23:31:16.508  INFO 51690 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-03-01 23:31:16.620  INFO 51690 --- [nio-8080-exec-1] c.t.l.p.a.c.LibraryEventController       : Before Sync libraryEvent..
+2021-03-01 23:31:16.645  INFO 51690 --- [nio-8080-exec-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
         acks = 1
         batch.size = 16384
         bootstrap.servers = [localhost:9092, localhost:9093, localhost:9094]
@@ -155,11 +154,20 @@ http://localhost:8080/v1/libraryevent
         transactional.id = null
         value.serializer = class org.apache.kafka.common.serialization.StringSerializer
 
-2021-02-27 00:41:12.981  INFO 35836 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.6.0
-2021-02-27 00:41:12.982  INFO 35836 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 62abe01bee039651
-2021-02-27 00:41:12.982  INFO 35836 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1614386472981
-2021-02-27 00:41:12.993  INFO 35836 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: QRxGzd66R6iVmc5qoW5Dqg
-2021-02-27 00:41:13.114  INFO 35836 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0}}]
+2021-03-01 23:31:16.673  INFO 51690 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.6.0
+2021-03-01 23:31:16.674  INFO 51690 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 62abe01bee039651
+2021-03-01 23:31:16.674  INFO 51690 --- [nio-8080-exec-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1614641476673
+2021-03-01 23:31:16.685  INFO 51690 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: QRxGzd66R6iVmc5qoW5Dqg
+2021-03-01 23:31:16.753  INFO 51690 --- [nio-8080-exec-1] c.t.l.p.a.c.LibraryEventController       : SendResult values: SendResult [producerRecord=ProducerRecord(topic=library-events, partition=null, headers=RecordHeaders(headers = [], isReadOnly = true), key=null, value={"libraryEventId":null,"book":{"numberOfPages":0}}, timestamp=null), recordMetadata=library-events-0@10]
+2021-03-01 23:31:16.753  INFO 51690 --- [nio-8080-exec-1] c.t.l.p.a.c.LibraryEventController       : After send libraryEvent..
+
+```
+## Console Logs -01 [Synchronous kafkaTemplate.sendDefault(key, value) invocation]
+
+```
+2021-03-01 23:31:21.927  INFO 51690 --- [nio-8080-exec-2] c.t.l.p.a.c.LibraryEventController       : Before Async libraryEvent..
+2021-03-01 23:31:21.929  INFO 51690 --- [nio-8080-exec-2] c.t.l.p.a.c.LibraryEventController       : After send libraryEvent..
+2021-03-01 23:31:21.930  INFO 51690 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0}}]
 
 ```
 

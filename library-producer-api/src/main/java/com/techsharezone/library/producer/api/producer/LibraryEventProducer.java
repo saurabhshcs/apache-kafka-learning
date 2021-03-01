@@ -51,6 +51,16 @@ public class LibraryEventProducer {
     }
 
     public SendResult<Integer, String> sendLibraryEventSynchronous(final LibraryEvent libraryEvent) throws JsonProcessingException {
+        final Integer key = libraryEvent.getLibraryEventId();
+        final String value = objectMapper.writeValueAsString(libraryEvent);
+        SendResult<Integer, String> sendResult = null;
+
+        try {
+            sendResult = kafkaTemplate.sendDefault(key, value).get();
+        } catch (InterruptedException | ExecutionException e) {
+            log.error("Exception here, while sending the message: {}", e.getMessage());
+        }
+        return sendResult;
     }
 
     public SendResult<Integer, String> sendLibraryEventSynchronousWithTimeoutFeature(LibraryEvent libraryEvent) throws JsonProcessingException, TimeoutException {

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeoutException;
+
 /*
  * @project library-producer
  * @author  saurabhshcs
@@ -43,6 +45,18 @@ public class LibraryEventController {
         log.info("Before Sync libraryEvent..");
 
         SendResult<Integer, String> sendResult = producer.sendLibraryEventSynchronous(libraryEvent);
+        log.info("SendResult values: {}", sendResult.toString());
+        log.info("After send libraryEvent..");
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
+    }
+
+    @PostMapping("/v1/syncLibraryEventWithTimeoutFeature")
+    public ResponseEntity<LibraryEvent> syncLibraryEventWithTimeoutFeature(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException, TimeoutException {
+
+        log.info("Before Sync libraryEventWithTimeoutFeature..");
+
+        SendResult<Integer, String> sendResult = producer.sendLibraryEventSynchronousWithTimeoutFeature(libraryEvent);
         log.info("SendResult values: {}", sendResult.toString());
         log.info("After send libraryEvent..");
 

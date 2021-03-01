@@ -13,6 +13,8 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /*
  * @project library-producer
@@ -49,12 +51,15 @@ public class LibraryEventProducer {
     }
 
     public SendResult<Integer, String> sendLibraryEventSynchronous(final LibraryEvent libraryEvent) throws JsonProcessingException {
+    }
+
+    public SendResult<Integer, String> sendLibraryEventSynchronousWithTimeoutFeature(LibraryEvent libraryEvent) throws JsonProcessingException, TimeoutException {
         final Integer key = libraryEvent.getLibraryEventId();
         final String value = objectMapper.writeValueAsString(libraryEvent);
         SendResult<Integer, String> sendResult = null;
 
         try {
-            sendResult = kafkaTemplate.sendDefault(key, value).get();
+            sendResult = kafkaTemplate.sendDefault(key, value).get(2, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException e) {
             log.error("Exception here, while sending the message: {}", e.getMessage());
         }
@@ -74,5 +79,4 @@ public class LibraryEventProducer {
     private void handleSuccess(Integer key, String value, SendResult<Integer, String> result) {
         log.info("The message sent successfully to the key[{}] and the value is [{}]", key, value);
     }
-
 }

@@ -22,6 +22,26 @@
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:41 server-2.properties
 -rw-r--r--   1 saurabhshcs  admin  6863 17 Feb 22:57 server.properties
 ```
+#### Application configurations in aplication.yaml for auto configurations
+
+```
+spring:
+  profiles:
+    active: local
+    
+spring:
+  profiles: local
+  kafka:
+    template:
+      default-topic: library-events
+    producer:
+      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    admin:
+      properties:
+        bootstarp.servers: localhost:9092, localhost:9093, localhost:9094
+```
 </details>
 
 ## View Setup Apache Kafka Developer guide
@@ -45,7 +65,25 @@
 ./gradlew bootRun
 `
 
-### Test Driven Development Practice
+<details><summary>Automation Tests</summary>
+<details> <summary>Integration Tests </summary>
+
+#### LibraryEventControllerIntegrationTest
+
+```
+./gradlew clean test
+
+> Task :test
+2021-03-02 00:56:40.670  INFO 52992 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-02 00:56:40.671  INFO 52992 --- [extShutdownHook] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 30000 ms.
+
+BUILD SUCCESSFUL in 16s
+5 actionable tasks: 5 executed
+SAURABHs-MacBook-Pro:library-producer-api saurabhsharma$ 
+
+```
+</details>
+<details><summary>Unit Tests</summary>
 
 #### LibraryEventControllerTest
 
@@ -61,27 +99,8 @@ BUILD SUCCESSFUL in 16s
 SAURABHs-MacBook-Pro:library-producer-api saurabhsharma$ 
 
 ```
-
-## aplication.yaml for auto configurations
-
-```
-spring:
-  profiles:
-    active: local
-    
-spring:
-  profiles: local
-  kafka:
-    template:
-      default-topic: library-events
-    producer:
-      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
-      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    admin:
-      properties:
-        bootstarp.servers: localhost:9092, localhost:9093, localhost:9094
-```
+</details>
+</details>
 
 ## cURL command
 

@@ -102,10 +102,13 @@ http://localhost:8080/v1/libraryevent
 	 "bookAuthor":"Saurabh"
 
 	}
-}
-
+} 
 ```
-### Console Logs -01 [Asynchronous kafkaTemplate.sendDefault(key, value) invocation]
+
+<details><summary>View logs</summary>
+<p>
+
+#### Console Logs -01 [Asynchronous kafkaTemplate.sendDefault(key, value) invocation]
 
 ```
 2021-03-01 23:31:16.508  INFO 51690 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
@@ -204,22 +207,18 @@ http://localhost:8080/v1/libraryevent
 2021-03-02 00:14:44.186  INFO 52506 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0},"libraryEventType":"NEW"}]
 
 ```
+</p> </details>
+## View the topic in kafka broker using following cmd
 
-#### Topic created 
+`./kafka-topics --zookeeper localhost:2181 --list`
 
-## Run cmd for viewing the topics in kafka broker
-
-`
-./kafka-topics --zookeeper localhost:2181 --list
-`
-
+####List of the topics
 ```
 __consumer_offsets
 library-event
 ```
 
-
-#### View the messages for the `library-event`
+#### View the messages for the topic `library-event`
 `
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic library-event  --from-beginning
 `

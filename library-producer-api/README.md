@@ -16,7 +16,7 @@
 - I have used 3 Apache Kafka clusters and 3 replicas in this example. 
 - Please see following server.properties
 
-#### Config filed in `{KAFKA_HOME}/config/`
+#### Config files in `{KAFKA_HOME}/config/`
 ```
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:40 server-1.properties
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:41 server-2.properties

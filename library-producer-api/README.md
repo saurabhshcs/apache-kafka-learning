@@ -81,7 +81,7 @@ http://localhost:8080/v1/libraryevent
 }
 
 ```
-## Console Logs -01 [Asynchronous kafkaTemplate.sendDefault(key, value) invocation]
+### Console Logs -01 [Asynchronous kafkaTemplate.sendDefault(key, value) invocation]
 
 ```
 2021-03-01 23:31:16.508  INFO 51690 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
@@ -162,12 +162,22 @@ http://localhost:8080/v1/libraryevent
 2021-03-01 23:31:16.753  INFO 51690 --- [nio-8080-exec-1] c.t.l.p.a.c.LibraryEventController       : After send libraryEvent..
 
 ```
-## Console Logs -01 [Synchronous kafkaTemplate.sendDefault(key, value) invocation]
+### Console Logs -02 [Synchronous kafkaTemplate.sendDefault(key, value) invocation]
 
 ```
 2021-03-01 23:31:21.927  INFO 51690 --- [nio-8080-exec-2] c.t.l.p.a.c.LibraryEventController       : Before Async libraryEvent..
 2021-03-01 23:31:21.929  INFO 51690 --- [nio-8080-exec-2] c.t.l.p.a.c.LibraryEventController       : After send libraryEvent..
 2021-03-01 23:31:21.930  INFO 51690 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0}}]
+
+```
+
+### Console Logs -03 [Synchronous kafkaTemplate.send(TOPIC_NAME, key, value) with Headers]
+
+
+```
+2021-03-02 00:14:44.178  INFO 52506 --- [nio-8080-exec-3] c.t.l.p.a.c.LibraryEventController       : Before Async libraryEventWithSync..
+2021-03-02 00:14:44.178  INFO 52506 --- [nio-8080-exec-3] c.t.l.p.a.c.LibraryEventController       : After send libraryEvent..
+2021-03-02 00:14:44.186  INFO 52506 --- [ad | producer-1] c.t.l.p.a.producer.LibraryEventProducer  : The message sent successfully to the key[null] and the value is [{"libraryEventId":null,"book":{"numberOfPages":0},"libraryEventType":"NEW"}]
 
 ```
 

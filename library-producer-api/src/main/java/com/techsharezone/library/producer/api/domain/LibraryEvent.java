@@ -21,4 +21,5 @@ import java.awt.print.Book;
 
     private Integer libraryEventId;
     private Book book;
+    private LibraryEventType libraryEventType;
 }

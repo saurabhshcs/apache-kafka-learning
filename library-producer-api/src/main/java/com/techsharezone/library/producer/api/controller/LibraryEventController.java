@@ -3,6 +3,7 @@ package com.techsharezone.library.producer.api.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.techsharezone.library.producer.api.domain.LibraryEvent;
+import com.techsharezone.library.producer.api.domain.LibraryEventType;
 import com.techsharezone.library.producer.api.producer.LibraryEventProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,29 @@ public class LibraryEventController {
 
         SendResult<Integer, String> sendResult = producer.sendLibraryEventSynchronousWithTimeoutFeature(libraryEvent);
         log.info("SendResult values: {}", sendResult.toString());
+        log.info("After send libraryEvent..");
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
+    }
+
+    @PostMapping("/v1/asyncLibraryEventWithSend")
+    public ResponseEntity<LibraryEvent> asyncLibraryEventWithSend(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException, TimeoutException {
+
+        log.info("Before Async libraryEventWithSync..");
+
+        producer.sendLibraryEventAsyncWithSend(libraryEvent);
+        log.info("After send libraryEvent..");
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
+    }
+
+    @PostMapping("/v1/asyncLibraryEventWithHeader")
+    public ResponseEntity<LibraryEvent> asyncLibraryEventWithHeader(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException, TimeoutException {
+
+        log.info("Before Async libraryEventWithSync..");
+
+        libraryEvent.setLibraryEventType(LibraryEventType.NEW);
+        producer.sendLibraryEventAsyncWithHeader(libraryEvent);
         log.info("After send libraryEvent..");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);

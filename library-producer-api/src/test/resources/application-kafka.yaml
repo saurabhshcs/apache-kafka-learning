@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    enabled: true
+#    topicBaseName: test.vrm.vehicle.vehicle
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      transaction-id-prefix: txn-${HOSTNAME:vehicle-service}
+    consumer:
+      properties:
+        auto.offset.reset: "earliest"
+        isolation.level: "read_committed"
+      group-id: "testGroup"
+    properties:
+      security.protocol: "PLAINTEXT"

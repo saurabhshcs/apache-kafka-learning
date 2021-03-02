@@ -1,22 +1,28 @@
-# bootify-kafka
+## PART-1 Library event producer api
 
-### This is an example of Apache Kafka Producer API for sending message to a kafka topic by following ways:
+<details><summary>What is this example for ?</summary>
+
+#### Apache Kafka Producer API for sending message to a kafka topic by following ways:
 - Sending a message with synchronous/asynchronous
 - Sending a message with synchronous with timeout feature
 - Sending a message with ProducerRecord
 - Sending a message with ProducerRecord along with the headers
+</details>
 
-## PART-1 Library event producer api
-> This application is creating a topic programmatically. Please see [AutoCreateTopicConfig.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-producer-api/src/main/java/com/techsharezone/library/producer/api/config/AutoCreateTopicConfig.java)
-> This repository has the complete code related to kafka producers/consumers using spring boot.
-> I have used 3 Apache Kafka clusters and 3 replicas in this example. 
-> Please see following server.properties
+<details><summary>Application Overview & Required configurations </summary>
+	
+- This application is creating a topic programmatically. Please see [AutoCreateTopicConfig.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-producer-api/src/main/java/com/techsharezone/library/producer/api/config/AutoCreateTopicConfig.java)
+- This repository has the complete code related to kafka producers/consumers using spring boot.
+- I have used 3 Apache Kafka clusters and 3 replicas in this example. 
+- Please see following server.properties
 
+#### Config filed in `{KAFKA_HOME}/config/`
 ```
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:40 server-1.properties
 -rw-r--r--   1 saurabhshcs  admin  6864 19 Feb 23:41 server-2.properties
 -rw-r--r--   1 saurabhshcs  admin  6863 17 Feb 22:57 server.properties
 ```
+</details>
 
 ## View Setup Apache Kafka Developer guide
 
@@ -212,7 +218,7 @@ http://localhost:8080/v1/libraryevent
 
 `./kafka-topics --zookeeper localhost:2181 --list`
 
-####List of the topics
+#### List of the topics
 ```
 __consumer_offsets
 library-event

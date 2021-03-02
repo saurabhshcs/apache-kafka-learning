@@ -33,6 +33,23 @@
 ./gradlew bootRun
 `
 
+### Test Driven Development Practice
+
+#### LibraryEventControllerTest
+
+```
+./gradlew clean test
+
+> Task :test
+2021-03-02 00:56:40.670  INFO 52992 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-02 00:56:40.671  INFO 52992 --- [extShutdownHook] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 30000 ms.
+
+BUILD SUCCESSFUL in 16s
+5 actionable tasks: 5 executed
+SAURABHs-MacBook-Pro:library-producer-api saurabhsharma$ 
+
+```
+
 ## aplication.yaml for auto configurations
 
 ```
@@ -62,6 +79,7 @@ curl -i \
 -H "Content-Type: application/json" \
 -X POST http://localhost:8080/v1/libraryevent
 ```
+
 ## Or Endpoint URL for postman or any other RestClient
 
 ```

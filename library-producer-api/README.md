@@ -205,7 +205,7 @@ http://localhost:8080/v1/libraryevent
 
 ```
 
-> Topic created 
+#### Topic created 
 
 ## Run cmd for viewing the topics in kafka broker
 
@@ -215,9 +215,14 @@ http://localhost:8080/v1/libraryevent
 
 ```
 __consumer_offsets
-first-replicated-topic
 library-event
 ```
+
+
+#### View the messages for the `library-event`
+`
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic library-event  --from-beginning
+`
 
 ## Happy Learning!!!
 

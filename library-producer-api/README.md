@@ -1,5 +1,11 @@
 # bootify-kafka
 
+### This is an example of Apache Kafka Producer API for sending message to a kafka topic by following ways:
+- Sending a message with synchronous/asynchronous
+- Sending a message with synchronous with timeout feature
+- Sending a message with ProducerRecord
+- Sending a message with ProducerRecord along with the headers
+
 ## PART-1 Library event producer api
 > This application is creating a topic programmatically. Please see [AutoCreateTopicConfig.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-producer-api/src/main/java/com/techsharezone/library/producer/api/config/AutoCreateTopicConfig.java)
 > This repository has the complete code related to kafka producers/consumers using spring boot.

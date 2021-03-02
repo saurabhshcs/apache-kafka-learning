@@ -30,6 +30,12 @@ dependencies {
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
 
+sourceSets{
+	test{
+		java.srcDirs = ['src/test/java/unittests', 'src/test/java/integrationtests']
+	}
+}
+
 test {
 	useJUnitPlatform()
 }

@@ -3,10 +3,8 @@
 <details><summary>What is this example for ?</summary>
 
 #### Apache Kafka Consumer API for sending message to a kafka topic by following ways:
-- Sending a message with synchronous/asynchronous
-- Sending a message with synchronous with timeout feature
-- Sending a message with ProducerRecord
-- Sending a message with ProducerRecord along with the headers
+- Reading message from the kafka topic `library-events` using the object of `ConsumerRecord<Integer, String>`.<br/> 
+  Please refer the consumer class - [LibraryEventConsumer.java](https://github.com/saurabhshcs/apache-kafka-learning/blob/main/library-event-consumer-api/src/main/java/com/techsharezone/libraryeventconsumerapi/consumer/LibraryEventConsumer.java)
 </details>
 
 <details><summary>Application Overview & Required configurations </summary>
@@ -28,19 +26,19 @@
 spring:
   profiles:
     active: local
-    
+server:
+  port: 8081
+
+---
 spring:
   profiles: local
   kafka:
-    template:
-      default-topic: library-events
-    producer:
-      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
-      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    admin:
-      properties:
-        bootstarp.servers: localhost:9092, localhost:9093, localhost:9094
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
+
 ```
 </details>
 

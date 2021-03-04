@@ -51,4 +51,29 @@ class LibraryEventControllerIntegrationTest {
         //then
         assertThat(HttpStatus.CREATED, is(responseEntity.getStatusCode()));
     }
+
+    @Test
+    void postLibraryEventWithnullEventId() {
+        //given
+        Book book = Book.builder()
+                .id(null)
+                .name("Apache Kafka")
+                .author("Saurabh")
+                .build();
+
+        LibraryEvent libraryEvent = LibraryEvent.builder()
+                .libraryEventId(null)
+                .book(book)
+                .build();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("content-type", MediaType.APPLICATION_JSON_VALUE.toString());
+        HttpEntity <LibraryEvent> request = new HttpEntity<>(libraryEvent, headers);
+
+        //when
+        ResponseEntity<? extends LibraryEvent> responseEntity = testRestTemplate.exchange("/v1/asyncLibraryEvent", HttpMethod.POST, request, libraryEvent.getClass());
+
+        //then
+        assertThat(HttpStatus.CREATED, is(responseEntity.getStatusCode()));
+    }
 }

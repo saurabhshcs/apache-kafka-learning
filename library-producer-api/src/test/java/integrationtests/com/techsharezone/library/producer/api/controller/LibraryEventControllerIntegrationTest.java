@@ -53,7 +53,7 @@ class LibraryEventControllerIntegrationTest {
     }
 
     @Test
-    void postLibraryEventWithnullEventId() {
+    void postLibraryEventWithNullEventId() {
         //given
         Book book = Book.builder()
                 .id(null)

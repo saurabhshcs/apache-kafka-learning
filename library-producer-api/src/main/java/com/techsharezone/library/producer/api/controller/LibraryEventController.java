@@ -33,6 +33,8 @@ public class LibraryEventController {
 
         log.info("Before Async libraryEvent..");
 
+        log.info("LibraryEvent- {}", libraryEvent.toString());
+
         producer.sendLibraryEvent(libraryEvent);
 
         log.info("After send libraryEvent..");

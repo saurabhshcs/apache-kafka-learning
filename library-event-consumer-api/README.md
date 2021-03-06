@@ -62,7 +62,12 @@ spring:
 `
 ./gradlew bootRun
 `
-
+#### Run multiple instances of this consumer application
+```
+java -jar build/libs/library-event-consumer-api-0.0.1-SNAPSHOT.jar
+java -jar Dserver.port:8082 build/libs/library-event-consumer-api-0.0.1-SNAPSHOT.jar
+java -jar Dserver.port:8083 build/libs/library-event-consumer-api-0.0.1-SNAPSHOT.jar
+```
 <details><summary>Automation Tests</summary>
 <details> <summary>Integration Tests </summary>
 

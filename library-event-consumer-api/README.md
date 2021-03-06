@@ -118,13 +118,13 @@ http://localhost:8080/v1/libraryevent
 
 ```
 {
-  "libraryEventId":"null",
-  "book":{
-	 "bookId":123,
-	 "bookName":"Apache Kafka with Spring Boot",
-	 "bookAuthor":"Saurabh"
-
-	}
+   "libraryEventId":null,
+   "book":{
+      "id":456,
+      "name":"Kafka Using Spring Boot",
+      "author":"Saurabh Sharma"
+   },
+   "libraryEventType":null
 } 
 ```
 

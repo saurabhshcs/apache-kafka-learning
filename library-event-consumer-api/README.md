@@ -1,4 +1,4 @@
-## PART-2 Library event consumer api
+## PART-2 Library event consumer api with multiple instances on Mac.
 
 <details><summary>What is this example for ?</summary>
 

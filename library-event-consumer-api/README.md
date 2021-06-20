@@ -132,6 +132,11 @@ http://localhost:8080/v1/libraryevent
    "libraryEventType":null
 } 
 ```
+#### Kafka Producer API command
+
+```shell
+./kafka-console-producer --topic library-events-04 --bootstrap-server localhost:9092 localhost:9093 localhost:9094
+```
 
 <details><summary>View logs</summary>
 <p>

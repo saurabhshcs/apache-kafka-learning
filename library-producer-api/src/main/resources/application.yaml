@@ -18,3 +18,20 @@ spring:
     admin:
       properties:
         bootstarp.servers: localhost:9092, localhost:9093, localhost:9094
+
+
+  devtools:
+    add-properties: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+  springdoc:
+    swagger-ui:
+      operationsSorter: method
+
+
+
